@@ -71,7 +71,7 @@ func withVAT(item *DataCSV) string {
 	// name, country, address, email, number, date, date payment, currency,
 	// tax, total, total, tax, tax amount, net, tax amount, total
 
-	return fmt.Sprintf(template, item.ClientName, item.ClientCountry, item.ClientAddress, item.ClientEmail, item.Number, item.Date, item.PaymentDate, item.Currency, item.VATFull, item.TotalAmount, item.TotalAmount, item.VATShort, item.VATAmount, item.NetAmount, item.VATAmount, item.TotalAmount)
+	return fmt.Sprintf(template, item.ClientName, item.ClientCountry, item.ClientAddress, item.ClientEmail, item.Number, item.Date, item.PaymentDate, item.Currency, item.VATFull, item.NetAmount+"00", item.NetAmount, item.VATShort, item.VATAmount, item.NetAmount, item.VATAmount, item.TotalAmount)
 }
 
 func withoutVAT(item *DataCSV) string {
@@ -139,5 +139,5 @@ func withoutVAT(item *DataCSV) string {
 			</Observatii>
 		</Factura>`
 
-	return fmt.Sprintf(template, item.ClientName, item.ClientCountry, item.ClientAddress, item.ClientEmail, item.Number, item.Date, item.PaymentDate, item.Currency, item.TotalAmount, item.TotalAmount, item.NetAmount, item.TotalAmount)
+	return fmt.Sprintf(template, item.ClientName, item.ClientCountry, item.ClientAddress, item.ClientEmail, item.Number, item.Date, item.PaymentDate, item.Currency, item.NetAmount+"00", item.NetAmount, item.NetAmount, item.TotalAmount)
 }

@@ -24,17 +24,20 @@ type DataCSV struct {
 	Currency    string `csv:"accounting_currency"`
 	TotalAmount string `csv:"total_amount"`
 	NetAmount   string `csv:"net_amount"`
-	VATAmount   string `csv:"tax_1_amount"`
 	VAT         string `csv:"tax_1_rate"`
 	VATFull     string
 	VATShort    string
+	VATAmount   string `csv:"tax_1_amount"`
 }
 
 func (d *DataCSV) preRender() {
 	d.ClientName = t.Wikipedia.Translate(d.ClientName)
 
-	d.Date = strings.ReplaceAll(d.Date, "/", "-")
-	d.PaymentDate = strings.ReplaceAll(d.PaymentDate, "/", "-")
+	d.Date = strings.ReplaceAll(d.Date, "/", ".")
+	d.Date = strings.ReplaceAll(d.Date, "-", ".")
+
+	d.PaymentDate = strings.ReplaceAll(d.PaymentDate, "/", ".")
+	d.PaymentDate = strings.ReplaceAll(d.PaymentDate, "-", ".")
 
 	var address []string
 	if d.ClientStreetLine1 != "" {
